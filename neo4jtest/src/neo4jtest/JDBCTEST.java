@@ -10,7 +10,7 @@ public class JDBCTEST {
 			
 			con = DriverManager.getConnection("jdbc:neo4j://localhost:7474","neo4j","1");
 			
-			System.out.println("Select operations to perform \n 1. add a customer \n 2. display all the customers \n 3. create Relationship");
+			System.out.println("Select operations to perform \n 1. add a customer \n 2. display all the customers \n 3. create Relationship \n 4. Delete a Relationship");
 			
 			Scanner s = new Scanner(System.in);
 			int ch = s.nextInt();
@@ -52,6 +52,12 @@ public class JDBCTEST {
 					System.out.println("EXCEPTION");
 					break;
 				}
+				
+			case 4:
+				System.out.println("Enter the node to delete:");
+				String nodeName = s.next();
+				deleteRelationship(nodeName);
+				break;
 			
 			default:
 				System.out.println("Invalid choice");
@@ -59,6 +65,8 @@ public class JDBCTEST {
 				
 				
 			}
+			
+			
 			
 		con.close();
 			
@@ -90,6 +98,23 @@ public class JDBCTEST {
 		while(rs.next()){
 				System.out.println(rs.getString("a.name") + "\t" + rs.getInt("a.balance") + "\t" + rs.getInt("a.age"));
 		}
+		
+	}
+	
+	public static void deleteRelationship(String nodeName) throws SQLException{
+		
+		String query = "MATCH (a:Customer{name:{1}})-[r]->(b:Customer) delete r";
+		PreparedStatement preparestmt = con.prepareStatement(query);
+		preparestmt.setString(1, nodeName);
+		preparestmt.executeUpdate();
+		
+		query = "MATCH (a:Customer)-[r]->(b:Customer{name:{1}}) delete r";
+		PreparedStatement preparestmt1 = con.prepareStatement(query);
+		preparestmt1.setString(1, nodeName);
+		preparestmt1.executeUpdate();
+		
+		System.out.println("Deleted relationships");
+		
 		
 	}
 	
