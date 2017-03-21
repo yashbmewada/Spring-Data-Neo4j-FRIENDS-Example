@@ -21,13 +21,15 @@ public class PersonController {
         this.personService = personService;
     }
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @RequestMapping(value = "/create", method = RequestMethod.GET)
     public void create(){
+    	System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
         personService.createPeople();
         System.out.println("Created People");
     }
     @RequestMapping(value="/find",method = RequestMethod.GET)
     public Iterable<Person> findPeople(){
+    	System.out.println("################################");
         Iterable<Person> personIterable = personService.getAllPeople();
         for(Person person : personIterable){
             System.out.println("Name:" + person.getName() + " Age" + person.getAge() + "ID" + person.getId());

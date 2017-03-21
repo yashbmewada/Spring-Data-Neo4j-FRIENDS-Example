@@ -29,18 +29,24 @@ public class PersonService{
         Person auzrielle = new Person("Auzi Rielle", 22 , "LA", "USA");
         Person vishal = new Person("Vishal Katharotiya", 21, "GJ","IN");
 
+        
+        personRepository.save(yash);
+        personRepository.save(kalpesh);
+        personRepository.save(heli);
+        personRepository.save(auzrielle);
+        personRepository.save(vishal);
+        
         yash.addFriend(kalpesh);
         kalpesh.addFriend(heli);
         yash.addFriend(vishal);
-        vishal.addFriend(heli);
+        vishal.addFriend(heli);        
         vishal.addFriend(kalpesh);
-        List<Person> people = new ArrayList<>();
-        people.add(yash);
-        people.add(kalpesh);
-        people.add(auzrielle);
-        people.add(vishal);
-        people.add(heli);
-        personRepository.save(people);
+        
+        personRepository.save(yash);
+        personRepository.save(kalpesh);
+        personRepository.save(heli);
+        personRepository.save(auzrielle);
+        personRepository.save(vishal);
 
     }
 
