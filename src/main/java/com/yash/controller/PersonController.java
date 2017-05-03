@@ -47,5 +47,15 @@ public class PersonController {
         return personService.getPeopleByCountry(state,country);
     }
 
+    @RequestMapping(value="/findAPOC", method = RequestMethod.GET)
+    public List<Person> findFriendsAPOC(@RequestParam(value="name")String name){
+        return personService.getPeopleAPOC(name);
+    }
+
+    @RequestMapping(value="/findFriends", method = RequestMethod.GET)
+    public List<Person> findFriendsList(@RequestParam(value = "name")String name){
+        return personService.getFriendList(name);
+    }
+
 
 }

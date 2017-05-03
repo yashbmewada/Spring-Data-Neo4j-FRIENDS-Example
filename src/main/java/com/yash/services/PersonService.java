@@ -61,4 +61,12 @@ public class PersonService{
     public Iterable<Person> getAllPeople(){
         return personRepository.findAll(1);
     }
+
+    public List<Person> getPeopleAPOC(String name){
+        return personRepository.findFriendsForNameAPOC(name);
+    }
+
+    public List<Person> getFriendList(String name){
+        return personRepository.findPersonwithFriends(name);
+    }
 }

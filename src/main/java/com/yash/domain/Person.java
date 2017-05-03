@@ -5,6 +5,7 @@ import org.neo4j.ogm.annotation.NodeEntity;
 import org.neo4j.ogm.annotation.Relationship;
 import org.neo4j.ogm.annotation.typeconversion.DateLong;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -33,7 +34,7 @@ public class Person {
     }
 
     @Relationship(type = "FRIENDS_WITH", direction = "UNDIRECTED")
-    private List<Person> friendsList;
+    private List<Person> friendsList = new ArrayList<>();
 
 
     public Long getId() {
