@@ -18,5 +18,5 @@ It is a maven project which follows the standard Java Spring Boot Repository Pat
 
   run the project with mvn spring-boot:run.
 
-# Author : Yash Mewada
-# Email: ybmewada@gmail.com
+ Author : Yash Mewada
+ Email: ybmewada@gmail.com
